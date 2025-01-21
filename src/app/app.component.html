@@ -1,0 +1,17 @@
+<div class="container ">
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="">Nome:</label><br>
+      <input type="text" formControlName="name">
+    </div>
+    <div>
+      <label for="" formControlName="lastname">Sobrenome:</label><br>
+      <input type="text">
+    </div>
+    <div>
+      <label for="" formControlName="email">Email:</label><br>
+      <input type="email">
+    </div>
+    <button class="btn btn-primary">Salvar</button>
+  </form>
+</div>
