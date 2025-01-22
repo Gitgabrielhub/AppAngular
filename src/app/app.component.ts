@@ -11,6 +11,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class AppComponent {
   title = 'Angular';
   formulario!: FormGroup;
+  data: any[] = []
 
   ngOnInit(): void {
     this.formulario = new FormGroup({
@@ -31,9 +32,16 @@ export class AppComponent {
   }
 
   submit(){
-    if(this.formulario.valid){
-      console.log(this.formulario.value);
-    }
+    
+      this.data.push(this.formulario.value)
+      console.log(this.data)
+
+      this.formulario = new FormGroup({
+        name: new FormControl(""),
+        lastname: new FormControl(""),
+        email: new FormControl(""),
+      })
+    
   }
 
 }

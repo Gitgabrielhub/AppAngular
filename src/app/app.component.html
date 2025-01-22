@@ -4,13 +4,17 @@
       <label for="name">Nome:</label><br>
       <input id="name" type="text" formControlName="name">
       <div *ngIf="name.invalid && formDir.submitted" class="validation-error">
-        <p *ngIf="name.errors?.['required']">*o titulo é obrigatorio</p>
+        <p *ngIf="name.errors?.['required']">*o nome é obrigatorio</p>
         <p *ngIf="name.errors?.['minlength']">*o minimo de letras são 2</p>
       </div>
     </div>
     <div>
       <label for="lastname" >Sobrenome:</label><br>
       <input id="lastname" type="text" formControlName="lastname">
+      <div *ngIf="lastname.invalid && formDir.submitted" class="validation-error">
+        <p *ngIf="lastname.errors?.['required']">*o sobrenome é obrigatorio</p>
+        <p *ngIf="lastname.errors?.['minlength']">*o minimo de letras são 2</p>
+      </div>
       
     </div>
     <div>
@@ -19,4 +23,8 @@
     </div>
     <button class="btn btn-primary"  >Salvar</button>
   </form>
+  <div *ngIf="formDir.submitted" >
+    <h1 >Resultado</h1>
+    <h2 *ngFor="let object of data">Nome:{{object.name}} </h2>
+  </div>
 </div>
