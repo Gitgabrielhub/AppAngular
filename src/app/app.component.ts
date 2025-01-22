@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
@@ -14,13 +14,26 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.formulario = new FormGroup({
-      name: new FormControl("",Validators.required),
-      lastname: new FormControl("",Validators.required),
-      email: new FormControl("",Validators.required),
+      name: new FormControl("",[Validators.required, Validators.minLength(5)]),
+      lastname: new FormControl("",[Validators.required, Validators.maxLength(5)]),
+      email: new FormControl("",[Validators.required, Validators.email]),
     })
   }
-  onSubmit(){
-    console.log(this.formulario)
+
+  get name(){
+    return this.formulario.get('name')!;
+  }
+  get lastname(){
+    return this.formulario.get('lastname')!;
+  }
+  get email(){
+    return this.formulario.get('email')!;
+  }
+
+  submit(){
+    if(this.formulario.valid){
+      console.log(this.formulario.value);
+    }
   }
 
 }

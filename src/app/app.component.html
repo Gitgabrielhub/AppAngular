@@ -1,17 +1,22 @@
 <div class="container ">
-  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+  <form (ngSubmit)="submit()" [formGroup]="formulario" #formDir = "ngForm">
     <div>
-      <label for="">Nome:</label><br>
-      <input type="text" formControlName="name">
+      <label for="name">Nome:</label><br>
+      <input id="name" type="text" formControlName="name">
+      <div *ngIf="name.invalid && formDir.submitted" class="validation-error">
+        <p *ngIf="name.errors?.['required']">*o titulo é obrigatorio</p>
+        <p *ngIf="name.errors?.['minlength']">*o minimo de letras são 2</p>
+      </div>
     </div>
     <div>
-      <label for="" formControlName="lastname">Sobrenome:</label><br>
-      <input type="text">
+      <label for="lastname" >Sobrenome:</label><br>
+      <input id="lastname" type="text" formControlName="lastname">
+      
     </div>
     <div>
-      <label for="" formControlName="email">Email:</label><br>
-      <input type="email">
+      <label for="email" >Email:</label><br>
+      <input id="email" type="email" formControlName="email">
     </div>
-    <button class="btn btn-primary">Salvar</button>
+    <button class="btn btn-primary"  >Salvar</button>
   </form>
 </div>
