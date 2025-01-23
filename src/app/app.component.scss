@@ -1,7 +1,9 @@
 $fontSize:18px;
 $fontColor:rgb(0, 0, 0);
 $backgroundColor:rgb(255, 255, 255);
+$alturaMain: 100vh;
 
 .container{
     background-color: $backgroundColor;
+    height: $alturaMain;
 } 
