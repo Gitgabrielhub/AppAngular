@@ -16,9 +16,14 @@ label{
     width: 50%;
     height: 30px;
     border-radius: 5px;
+    font-size: 19px;
+    padding: 1px 0;
     border: none;
     cursor: pointer;
 }
 .btn:hover{
-    background-color: #ccc;
+    
+    height: 40%;
+
+    background-color: rgb(0, 0, 0);
 }

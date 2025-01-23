@@ -41,10 +41,12 @@
             <button class="btn btn-primary">Salvar</button>
           </div>
         </form>
-        <div *ngIf="formDir.submitted" >
-          <h1 >Resultado</h1>
-          <h2 *ngFor="let object of data">Nome:{{object.name}} </h2>
-        </div>
       </div>
+    </div>
+  </div>
+  <div class="container">
+    <div *ngIf="formDir.submitted" >
+      <h1 >Resultado</h1>
+      <h2 *ngFor="let object of data">Nome:{{object.name}} </h2>
     </div>
   </div>
