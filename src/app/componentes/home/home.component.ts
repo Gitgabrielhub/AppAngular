@@ -30,17 +30,17 @@ export class HomeComponent {
     }
   
     submit(){
+      this.data.push(this.formulario.value)
+      console.log(this.data)
+      
+      this.formulario = new FormGroup({
+        name: new FormControl(""),
+        lastname: new FormControl(""),
+        email: new FormControl(""),
+      })
       if (this.formulario.invalid){
         return
       }
-        this.data.push(this.formulario.value)
-        console.log(this.data)
-  
-        this.formulario = new FormGroup({
-          name: new FormControl(""),
-          lastname: new FormControl(""),
-          email: new FormControl(""),
-        })
       
     }
 }
