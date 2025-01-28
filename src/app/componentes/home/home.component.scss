@@ -1,3 +1,4 @@
+$colorError: red;
 .containerPrincipal{
     height: 70vh;
 }
@@ -26,4 +27,16 @@ label{
     height: 40%;
 
     background-color: rgb(0, 0, 0);
+}
+.verification-error-name{
+    color: $colorError;
+    font-size: 15px;
+}
+.verification-error-lastname{
+    color: $colorError;
+    font-size: 15px;
+}
+.verification-error-email{
+    color: $colorError;
+    font-size: 15px;
 }

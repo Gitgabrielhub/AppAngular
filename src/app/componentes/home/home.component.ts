@@ -30,7 +30,9 @@ export class HomeComponent {
     }
   
     submit(){
-      
+      if (this.formulario.invalid){
+        return
+      }
         this.data.push(this.formulario.value)
         console.log(this.data)
   
