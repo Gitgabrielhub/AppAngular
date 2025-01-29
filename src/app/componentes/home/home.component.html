@@ -38,8 +38,18 @@
             <input id="email" type="email" formControlName="email">
             <div *ngIf="email.invalid && formDir.submitted" class="validation-error">
               <p class="verification-error-lastname" *ngIf="email.errors?.['required']">*O Email é obrigatorio</p>
-              
             </div>
+          </div>
+          <div class="mt-3 checkbox"   >
+            <div>
+              <input id="checkbox" type="checkbox" formControlName="checkbox">
+            </div>
+            <div>
+              <p>Ao criar uma conta, voce aceita os <a [routerLink]="['/termos']">termos de uso</a></p>
+            </div>
+          </div>
+          <div class="mt-3">
+            <p><a [routerLink]="['/login']">CLIQUE AQUI </a>para para logar</p>
           </div>
           <div class="mt-3">
             <button class="btn btn-primary">Salvar</button>

@@ -16,6 +16,8 @@ export class HomeComponent {
         name: new FormControl("",[Validators.required, Validators.minLength(5)]),
         lastname: new FormControl("",[Validators.required, Validators.maxLength(5)]),
         email: new FormControl("",[Validators.required, Validators.email]),
+        checkbox: new FormControl(false)
+        
       })
     }
   
@@ -28,6 +30,9 @@ export class HomeComponent {
     get email(){
       return this.formulario.get('email')!;
     }
+    get checkbox(){
+      return this.formulario.get('checkbox')!;
+    }
   
     submit(){
       this.data.push(this.formulario.value)
@@ -37,6 +42,7 @@ export class HomeComponent {
         name: new FormControl(""),
         lastname: new FormControl(""),
         email: new FormControl(""),
+        checkbox: new FormControl(false)
       })
       if (this.formulario.invalid){
         return

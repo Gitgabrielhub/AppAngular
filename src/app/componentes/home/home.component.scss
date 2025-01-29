@@ -40,3 +40,12 @@ label{
     color: $colorError;
     font-size: 15px;
 }
+.checkbox{
+    display: flex;
+    gap: 10px;
+
+}
+.checkbox div input{
+    width: 20px;
+    height: 20px;
+}
