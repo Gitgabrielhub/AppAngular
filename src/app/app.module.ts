@@ -7,6 +7,8 @@ import { HomeComponent } from './componentes/home/home.component';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { NavBarComponent } from './componentes/nav-bar/nav-bar.component';
 import { NegocicoesComponent } from './componentes/negocicoes/negocicoes.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -21,7 +23,8 @@ import { NegocicoesComponent } from './componentes/negocicoes/negocicoes.compone
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
