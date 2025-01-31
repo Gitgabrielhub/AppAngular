@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { map } from 'rxjs';
 import { FinanceApiService } from 'src/app/services/finance-api.service';
 
 
@@ -8,10 +9,14 @@ import { FinanceApiService } from 'src/app/services/finance-api.service';
   styleUrls: ['./negocicoes.component.scss']
 })
 export class NegocicoesComponent {
+  prices: any[] =[]; 
   constructor(private financeApi: FinanceApiService) { }
   ngOnInit(): void {
     this.financeApi.getNegociacoes().subscribe((data) => {
-      console.log(data);
+      this.prices = data
+      this.prices.map((item) => {
+        console.log(item.price = parseFloat(item.price).toFixed(2))
+      })
     })
   }
 }
