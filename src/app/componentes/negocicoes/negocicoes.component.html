@@ -1,1 +1,14 @@
-<p>negocicoes works!</p>
+<div class="row">
+    <div class="col">
+        <h4>Moeda</h4>
+        <form action="" (keyup)="pesquisar()" [formGroup]="formulario">
+            
+            <input type="text" name="moedas" id="moeda" formControlName="moedas">
+
+            <!-- <select name="moedas" id="moedas" formControlName="moedas">
+                <option value="" *ngFor="let moeda of moedas">{{moeda}}</option>
+            </select> <br> -->
+            <button>Buscar</button>
+        </form>
+    </div>
+</div>
