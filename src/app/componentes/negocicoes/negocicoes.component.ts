@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { map } from 'rxjs';
 import { FinanceApiService } from 'src/app/services/finance-api.service';
+
+
 
 
 
@@ -13,6 +15,10 @@ import { FinanceApiService } from 'src/app/services/finance-api.service';
 export class NegocicoesComponent {
   prices: any[] =[]; 
   moedas: any[] =[]; 
+  dataCurrency: any[] =[];
+  
+  
+
   formulario!:FormGroup;
 
   constructor(private financeApi: FinanceApiService) { }
@@ -21,12 +27,11 @@ export class NegocicoesComponent {
       this.prices = data
       this.moedas = data.map((item:any) => item.symbol)
       this.prices.map((item) => {
-        console.log(item.price = parseFloat(item.price).toFixed(2), item.symbol)
+        console.log(item.price = parseFloat(item.price).toFixed(2))
       })
     })
 
-    this.formulario = new FormGroup(
-      {
+    this.formulario = new FormGroup({
         moedas: new FormControl('',[Validators.required])
       }
     )
@@ -36,15 +41,7 @@ export class NegocicoesComponent {
   getMoedas(){
     return this.formulario.get('moedas');
   }
-  pesquisar(){
-    
-    this.financeApi.getNegociacoes().subscribe((data)=>{
-      this.moedas = data.map((item:any) => item.symbol.toLowerCase(), );
-      this.moedas.filter((item:any) =>{
-        if(item === this.formulario.value){
-          console.log(item.symbol)
-        }
-      })
-    })
+  pesquisar() {
+   console.log(this.getMoedas()?.value)
   }
 }

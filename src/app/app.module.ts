@@ -9,6 +9,10 @@ import { NavBarComponent } from './componentes/nav-bar/nav-bar.component';
 import { NegocicoesComponent } from './componentes/negocicoes/negocicoes.component';
 import { HttpClientModule } from '@angular/common/http';
 import { enviroments } from './enviroments';
+import { PaginatorComponent } from './componentes/paginator/paginator.component';
+
+
+
 
 
 
@@ -19,7 +23,8 @@ import { enviroments } from './enviroments';
     AppComponent,
     HomeComponent,
     NavBarComponent,
-    NegocicoesComponent
+    NegocicoesComponent,
+    PaginatorComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +32,8 @@ import { enviroments } from './enviroments';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    
+    
   
     
   ],
