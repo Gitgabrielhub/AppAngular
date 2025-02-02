@@ -1,20 +1,30 @@
 <div class="row mt-5">
     <div class="col">
         <h4>Moeda</h4>
-        <form action=""  [formGroup]="formulario">
+        <form action=""  [formGroup]="formulario" #formDir >
             
             <input type="text" name="moedas" id="moeda" formControlName="moedas" (input)="search($event)">
 
         </form>
     </div>
 </div>
-<div class="response">
+<!-- <div class="response" *ngIf="formulario.get('moedas')?.value === ''">
     <div class="row mt-5">
         <div class="col-6">
             <p *ngFor="let moeda of moedas" >{{moeda.symbol}}</p>
         </div>
         <div class="col-6">
             <p *ngFor="let moeda of moedas" >{{moeda.price}}</p>
+        </div>
+    </div>
+</div> -->
+<div class="response">
+    <div class="row mt-5">
+        <div class="col-6">
+            <p *ngFor="let moeda of moedasfilter" >{{moeda.symbol}}</p>
+        </div>
+        <div class="col-6">
+            <p *ngFor="let moeda of moedasfilter" >{{moeda.price}}</p>
         </div>
     </div>
 </div>
