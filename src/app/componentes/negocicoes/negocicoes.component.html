@@ -1,19 +1,21 @@
-<div class="row">
+<div class="row mt-5">
     <div class="col">
         <h4>Moeda</h4>
-        <form action="" (keyup)="pesquisar()" [formGroup]="formulario">
+        <form action=""  [formGroup]="formulario">
             
-            <input type="text" name="moedas" id="moeda" formControlName="moedas">
+            <input type="text" name="moedas" id="moeda" formControlName="moedas" (input)="search($event)">
 
-            <!-- <select name="moedas" id="moedas" formControlName="moedas">
-                <option value="" *ngFor="let moeda of moedas">{{moeda}}</option>
-            </select> <br> -->
-            <button>Buscar</button>
         </form>
     </div>
 </div>
-<div class="row">
-    <div class="col">
-        <app-paginator [dataCurrencyInput]="dataCurrency"></app-paginator>
+<div class="response">
+    <div class="row mt-5">
+        <div class="col-6">
+            <p *ngFor="let moeda of moedas" >{{moeda.symbol}}</p>
+        </div>
+        <div class="col-6">
+            <p *ngFor="let moeda of moedas" >{{moeda.price}}</p>
+        </div>
     </div>
 </div>
+
