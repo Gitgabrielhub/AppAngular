@@ -10,6 +10,7 @@ import { NegocicoesComponent } from './componentes/negocicoes/negocicoes.compone
 import { HttpClientModule } from '@angular/common/http';
 import { enviroments } from './enviroments';
 import { PaginatorComponent } from './componentes/paginator/paginator.component';
+import { GraficoComponent } from './componentes/grafico/grafico.component';
 
 
 
@@ -24,7 +25,8 @@ import { PaginatorComponent } from './componentes/paginator/paginator.component'
     HomeComponent,
     NavBarComponent,
     NegocicoesComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    GraficoComponent
   ],
   imports: [
     BrowserModule,
