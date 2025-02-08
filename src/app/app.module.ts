@@ -11,12 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { enviroments } from './enviroments';
 import { PaginatorComponent } from './componentes/paginator/paginator.component';
 import { GraficoComponent } from './componentes/grafico/grafico.component';
-
-
-
-
-
-
+import { RenderChartComponent } from './componentes/render-chart/render-chart.component';
 
 
 @NgModule({
@@ -26,7 +21,9 @@ import { GraficoComponent } from './componentes/grafico/grafico.component';
     NavBarComponent,
     NegocicoesComponent,
     PaginatorComponent,
-    GraficoComponent
+    GraficoComponent,
+    RenderChartComponent, 
+    
   ],
   imports: [
     BrowserModule,
@@ -34,9 +31,6 @@ import { GraficoComponent } from './componentes/grafico/grafico.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    
-    
-  
     
   ],
   providers: [],
