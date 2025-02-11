@@ -12,6 +12,10 @@ import { enviroments } from './enviroments';
 import { PaginatorComponent } from './componentes/paginator/paginator.component';
 import { GraficoComponent } from './componentes/grafico/grafico.component';
 import { RenderChartComponent } from './componentes/render-chart/render-chart.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+
 
 
 @NgModule({
@@ -31,6 +35,9 @@ import { RenderChartComponent } from './componentes/render-chart/render-chart.co
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatPaginatorModule,
+    MatTableModule 
     
   ],
   providers: [],

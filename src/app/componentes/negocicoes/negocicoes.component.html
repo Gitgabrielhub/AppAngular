@@ -11,11 +11,24 @@
 <div class="response" >
     <div class="row mt-5">
         <div class="col-6">
+            <p class="moeda">Moeda</p>
+        </div>
+        <div class="col-6">
+            <p class="cotacao">Cotação</p>
+        </div>
+        <div class="col-6">
             <p *ngFor="let moeda of moedas" >{{moeda.symbol}}</p>
         </div>
         <div class="col-6">
             <p *ngFor="let moeda of moedas" >${{moeda.price}}</p>
         </div>
+    </div>
+    <div class="col-12 text-center">
+        <mat-paginator
+            [length]="totalItems"
+            [pageSize]="5"
+            [pageSizeOptions]="[5, 10, 20]">
+        </mat-paginator>
     </div>
 </div>
 
