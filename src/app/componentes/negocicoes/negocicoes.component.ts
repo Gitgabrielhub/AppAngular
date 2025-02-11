@@ -17,23 +17,30 @@ export class NegocicoesComponent {
 
   moedas: any[]=[];
   moedasfilter: any[]=[];
-  searchMoedas:string="";
+ invalidarFormulario:boolean = false;
   
 
   formulario!:FormGroup;
 
   constructor(private dadosApi: FinanceApiService) { }
   ngOnInit(): void {
-    this.dadosApi.getNegociacoes().subscribe((moedas) => {
-      this.moedas = moedas
-    })
-    
 
-    this.formulario = new FormGroup({
+      setTimeout(()=>{
+
+      },1000)
+      this.formulario = new FormGroup({
         moedas: new FormControl('',[Validators.required])
       }
     )
       
+  }
+  
+  
+
+  esconderResults(){
+    if(this.formulario.get('moedas')?.value == '' || this.formulario.get('moedas')?.value == null){
+      this.moedas= []
+    }
   }
 
   getMoedas(){

@@ -46,7 +46,11 @@ export class RenderChartComponent implements OnInit, OnDestroy {
           this.moedas.push(item)
           //console.log(this.moedas)
           if(this.moedas.length > 10){
-            this.topDez.push(this.moedas.slice(0,11))
+            this.moedas.slice(0,11).map((conj)=>{
+              this.topDez.push(conj)
+              
+            })
+            
             
           }
         })
