@@ -15,29 +15,32 @@ import { FinanceApiService } from 'src/app/services/finance-api.service';
 })
 export class NegocicoesComponent {
 
-  moedas: any[]=[];
-  moedasfilter: any[]=[];
- invalidarFormulario:boolean = false;
+  public moedas: any[]=[];
+  public moedasfilter: any[]=[];
+  invalidarFormulario:boolean = false;
+  
   
 
   formulario!:FormGroup;
 
   constructor(private dadosApi: FinanceApiService) { }
   ngOnInit(): void {
-    
+    this.esconderResults(); //não está funcionando esse codigo.
       this.dadosApi.getNegociacoes().subscribe((moedas) => {
         this.moedas = moedas
       })
       this.formulario = new FormGroup({
         moedas: new FormControl('',[Validators.required])
-      }
-    )
-      
+      })
   }
   esconderResults(){
-    if(this.formulario.get('moedas')?.value == '' || this.formulario.get('moedas')?.value == null){
-      this.moedas= []
+   let setarInput:any = document.getElementById('input-moeda');
+    if(setarInput.value === ''){
+      this.moedas = [];
+    }else{
+      this.moedasfilter = this.moedas.filter((moeda) => moeda.symbol.toLowerCase().includes(this.formulario.get('moedas')?.value.toLowerCase()))
     }
+
   }
 
   getMoedas(){
