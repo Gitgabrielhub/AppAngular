@@ -24,19 +24,16 @@ export class NegocicoesComponent {
 
   constructor(private dadosApi: FinanceApiService) { }
   ngOnInit(): void {
-
-      setTimeout(()=>{
-
-      },1000)
+    
+      this.dadosApi.getNegociacoes().subscribe((moedas) => {
+        this.moedas = moedas
+      })
       this.formulario = new FormGroup({
         moedas: new FormControl('',[Validators.required])
       }
     )
       
   }
-  
-  
-
   esconderResults(){
     if(this.formulario.get('moedas')?.value == '' || this.formulario.get('moedas')?.value == null){
       this.moedas= []
