@@ -1,8 +1,12 @@
 import { LowerCasePipe } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { map } from 'rxjs';
 import { FinanceApiService } from 'src/app/services/finance-api.service';
+import { PaginatorService } from 'src/app/services/paginator.service';
+
 
 
 
@@ -18,12 +22,15 @@ export class NegocicoesComponent {
   public moedas: any[]=[];
   public moedasfilter: any[]=[];
   invalidarFormulario:boolean = false;
-  
-  
-
   formulario!:FormGroup;
+  data = new MatTableDataSource<any>();
+  totalItens = 0;
+  pageSize = 10;
+  
+  @ViewChild(MatPaginator)paginator!:MatPaginator;
 
-  constructor(private dadosApi: FinanceApiService) { }
+  constructor(private dadosApi: FinanceApiService, private paginatorService:PaginatorService) { }
+
   ngOnInit(): void {
     this.esconderResults(); //não está funcionando esse codigo.
       this.dadosApi.getNegociacoes().subscribe((moedas) => {
@@ -32,6 +39,20 @@ export class NegocicoesComponent {
       this.formulario = new FormGroup({
         moedas: new FormControl('',[Validators.required])
       })
+      
+  }
+  ngAfterInit(){
+    this.paginator.page.subscribe(()=>{
+      this.loadPrices()
+    })
+    this.loadPrices()
+  }
+  loadPrices(){
+    const page = this.paginator.pageIndex + 1;
+    this.paginatorService.getMoedas(page, this.paginator.pageSize).subscribe(data=>{
+      this.data.data = data;
+      this.totalItens = 100;
+    })
   }
   esconderResults(){
    let setarInput:any = document.getElementById('input-moeda');

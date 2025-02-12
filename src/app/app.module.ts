@@ -9,7 +9,6 @@ import { NavBarComponent } from './componentes/nav-bar/nav-bar.component';
 import { NegocicoesComponent } from './componentes/negocicoes/negocicoes.component';
 import { HttpClientModule } from '@angular/common/http';
 import { enviroments } from './enviroments';
-import { PaginatorComponent } from './componentes/paginator/paginator.component';
 import { GraficoComponent } from './componentes/grafico/grafico.component';
 import { RenderChartComponent } from './componentes/render-chart/render-chart.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,7 +23,6 @@ import { MatTableModule } from '@angular/material/table';
     HomeComponent,
     NavBarComponent,
     NegocicoesComponent,
-    PaginatorComponent,
     GraficoComponent,
     RenderChartComponent, 
     
