@@ -5,7 +5,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { map } from 'rxjs';
 import { FinanceApiService } from 'src/app/services/finance-api.service';
+import { LogoCryptoService } from 'src/app/services/logo-crypto.service';
 import { PaginatorService } from 'src/app/services/paginator.service';
+
 
 
 
@@ -24,12 +26,13 @@ export class NegocicoesComponent {
   invalidarFormulario:boolean = false;
   formulario!:FormGroup;
   data = new MatTableDataSource<any>();
+  logo:any[] = [];
   totalItens = 0;
   pageSize = 10;
   
   @ViewChild(MatPaginator)paginator!:MatPaginator;
 
-  constructor(private dadosApi: FinanceApiService, private paginatorService:PaginatorService) { }
+  constructor(private dadosApi: FinanceApiService, private paginatorService:PaginatorService, private logoMoedas:LogoCryptoService) { }
 
   ngOnInit(): void {
     this.esconderResults(); //não está funcionando esse codigo.
@@ -39,7 +42,10 @@ export class NegocicoesComponent {
       this.formulario = new FormGroup({
         moedas: new FormControl('',[Validators.required])
       })
-      
+    this.logoMoedas.getLogo().subscribe(data=>{
+      this.logo.push(data)
+      console.log(this.logo)
+    })
   }
   ngAfterInit(){
     this.paginator.page.subscribe(()=>{

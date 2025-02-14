@@ -9,7 +9,7 @@ import { enviroments } from '../enviroments';
   providedIn: 'root'
 })
 export class FinanceApiService {
-   private apiUrl = `http://api.binance.com/api/v3/ticker/price`;
+   private apiUrl = `http://api.binance.com//api/v3/exchangeInfo`;
    
 
   constructor(private http: HttpClient) { }
