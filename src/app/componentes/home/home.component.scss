@@ -24,7 +24,7 @@ label{
 }
 .btn:hover{
     
-    height: 40%;
+    
 
     background-color: rgb(0, 0, 0);
 }
@@ -54,10 +54,13 @@ label{
     text-decoration: underline;
 }
 .btn-log{
+    height: 40%;
     padding: 10px;
+    border: 1px solid black;
 }
 .btn-log:hover{
     color: #ccc;    
+    border: 1px solid #ccc;
 }
 .logo{
     margin-right: 3rem;
