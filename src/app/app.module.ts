@@ -14,6 +14,7 @@ import { RenderChartComponent } from './componentes/render-chart/render-chart.co
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
+import { LoginComponent } from './componentes/login/login.component';
 
 
 
@@ -24,7 +25,8 @@ import { MatTableModule } from '@angular/material/table';
     NavBarComponent,
     NegocicoesComponent,
     GraficoComponent,
-    RenderChartComponent, 
+    RenderChartComponent,
+    LoginComponent, 
     
   ],
   imports: [

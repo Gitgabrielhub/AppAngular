@@ -42,10 +42,10 @@ export class NegocicoesComponent {
       this.formulario = new FormGroup({
         moedas: new FormControl('',[Validators.required])
       })
-    this.logoMoedas.getLogo().subscribe(data=>{
+    /* this.logoMoedas.getLogo().subscribe(data=>{
       this.logo.push(data)
       console.log(this.logo)
-    })
+    }) */
   }
   ngAfterInit(){
     this.paginator.page.subscribe(()=>{
