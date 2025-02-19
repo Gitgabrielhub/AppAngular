@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { LoginComponent } from './componentes/login/login.component';
+import { FooterComponent } from './componentes/footer/footer.component';
 
 
 
@@ -26,7 +27,8 @@ import { LoginComponent } from './componentes/login/login.component';
     NegocicoesComponent,
     GraficoComponent,
     RenderChartComponent,
-    LoginComponent, 
+    LoginComponent,
+    FooterComponent, 
     
   ],
   imports: [
