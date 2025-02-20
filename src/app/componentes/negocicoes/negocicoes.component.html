@@ -18,10 +18,10 @@
             <p class="cotacao">Cotação</p>
         </div>
         <div class="col-6">
-            <p *ngFor="let moeda of moedas" >{{moeda.symbol}}</p>
+            <p *ngFor="let moeda of moedasNaoZeradas" >{{moeda.symbol}}</p>
         </div>
         <div class="col-6">
-            <p *ngFor="let moeda of moedas" >${{moeda.price}}</p>
+            <p *ngFor="let moeda of moedasNaoZeradas" >${{moeda.price}}</p>
         </div>
     </div>
     <div class="col-12 text-center">

@@ -21,8 +21,10 @@ import { PaginatorService } from 'src/app/services/paginator.service';
 })
 export class NegocicoesComponent {
 
-  public moedas: any[]=[];
+  public moedasData: any[]=[];
   public moedasfilter: any[]=[];
+  public moedasZeradas:any[]=[];
+  public moedasNaoZeradas:any[]=[];
   invalidarFormulario:boolean = false;
   formulario!:FormGroup;
   data = new MatTableDataSource<any>();
@@ -30,44 +32,36 @@ export class NegocicoesComponent {
   totalItens = 0;
   pageSize = 10;
   
-  @ViewChild(MatPaginator)paginator!:MatPaginator;
+  
 
   constructor(private dadosApi: FinanceApiService, private paginatorService:PaginatorService, private logoMoedas:LogoCryptoService) { }
 
   ngOnInit(): void {
-    this.esconderResults(); //não está funcionando esse codigo.
-      this.dadosApi.getNegociacoes().subscribe((moedas) => {
-        this.moedas = moedas
-      })
-      this.formulario = new FormGroup({
-        moedas: new FormControl('',[Validators.required])
-      })
-    /* this.logoMoedas.getLogo().subscribe(data=>{
-      this.logo.push(data)
-      console.log(this.logo)
-    }) */
-  }
-  ngAfterInit(){
-    this.paginator.page.subscribe(()=>{
-      this.loadPrices()
+    this.formulario = new FormGroup({
+      moedas: new FormControl('',[Validators.required])
     })
-    this.loadPrices()
-  }
-  loadPrices(){
-    const page = this.paginator.pageIndex + 1;
-    this.paginatorService.getMoedas(page, this.paginator.pageSize).subscribe(data=>{
-      this.data.data = data;
-      this.totalItens = 100;
-    })
-  }
-  esconderResults(){
-   let setarInput:any = document.getElementById('input-moeda');
-    if(setarInput.value === ''){
-      this.moedas = [];
-    }else{
-      this.moedasfilter = this.moedas.filter((moeda) => moeda.symbol.toLowerCase().includes(this.formulario.get('moedas')?.value.toLowerCase()))
+    //this.esconderResults(); //não está funcionando esse codigo.
+      this.dadosApi.getNegociacoes().subscribe((moedas)=>{
+        this.moedasData.push(moedas)
+        this.moedasData.forEach((item)=>{
+          item.find((moeda:any)=>{ ////// substituir o array de moedas por um array de moedas zeradas e nao zeradas para pegar no filtro quando o usuario pesquisar.
+            moeda.price === "0.00000000"?this.moedasZeradas.push(moeda): this.moedasNaoZeradas.push(moeda); //this.moedasfilter = this.moedas.filter((moeda) => moeda.symbol.toLowerCase().includes(this.formulario.get('moedas')?.value.toLowerCase()))
+          }
+          )
+          
+        })
+       console.log(this.moedasZeradas)
+      })
+      
     }
-
+    
+    esconderResults(){
+      let setarInput:any = document.getElementById('input-moeda');
+      if(setarInput.value === ''){
+        this.moedasData = [];
+      }
+      
+      //this.moedasfilter = this.moedas.filter((moeda) => moeda.symbol.toLowerCase().includes(this.formulario.get('moedas')?.value.toLowerCase()))
   }
 
   getMoedas(){
@@ -77,7 +71,7 @@ export class NegocicoesComponent {
     /* const target = event.target as HTMLInputElement;
     const value = target.value; */
 
-    this.moedasfilter = this.moedas.filter((moeda) => moeda.symbol.toLowerCase().includes(this.formulario.get('moedas')?.value.toLowerCase()))
+    this.moedasfilter = this.moedasData.filter((moeda) => moeda.symbol.toLowerCase().includes(this.formulario.get('moedas')?.value.toLowerCase()))
     
   }
 }
