@@ -7,3 +7,23 @@
     font-size: 25px;
     color:blue ;
 }
+.rol{
+    height: 15rem;
+    border: 1px solid black;
+    border-radius: 10px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+.rol::-webkit-scrollbar {
+    width: 5px;
+    height: 7rem   ;
+}
+  
+.rol::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 4px;
+}
+  
+.rol::-webkit-scrollbar-track {
+    background: lightgray;
+}

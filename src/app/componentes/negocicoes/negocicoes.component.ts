@@ -45,7 +45,7 @@ export class NegocicoesComponent {
         this.moedasData.push(moedas)
         this.moedasData.forEach((item)=>{
           item.find((moeda:any)=>{ ////// substituir o array de moedas por um array de moedas zeradas e nao zeradas para pegar no filtro quando o usuario pesquisar.
-            moeda.price === "0.00000000"?this.moedasZeradas.push(moeda): this.moedasNaoZeradas.push(moeda); //this.moedasfilter = this.moedas.filter((moeda) => moeda.symbol.toLowerCase().includes(this.formulario.get('moedas')?.value.toLowerCase()))
+            moeda.price === "0.00000000" ? this.moedasZeradas.push(moeda): this.moedasNaoZeradas.push(moeda); //this.moedasfilter = this.moedas.filter((moeda) => moeda.symbol.toLowerCase().includes(this.formulario.get('moedas')?.value.toLowerCase()))
           }
           )
           
