@@ -1,5 +1,5 @@
 <div class="row mt-5">
-    <div class="col">
+    <div class="col-12 text-center">
         <h4>Moeda</h4>
         <form action=""  [formGroup]="formulario" #formDir >
             
@@ -11,12 +11,20 @@
 
 <div class="response" >
     <div class="row mt-5" >
-        <div class="col-12 text-center">
+        <div class="col-6 text-center">
             <p class="moeda text-center">Moeda</p>
         </div>
         
-        <div class="col-12  rol text-center">
+        <div class="col-6 text-center">
+            <p class="moeda text-center">Moedas desativadas</p>
+        </div>
+        
+        <div class="col-6 text-center  rol text-center">
             <p *ngFor="let moeda of moedasNaoZeradas" >{{moeda.symbol}}: {{moeda.price}}</p>
+        </div>
+        
+        <div class="col-6 text-center rol text-center">
+            <p *ngFor="let moeda of moedasZeradas" >{{moeda.symbol}}: {{moeda.price}}</p>
         </div>
         
     
