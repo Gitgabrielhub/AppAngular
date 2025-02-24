@@ -20,6 +20,7 @@ export class RenderChartComponent implements OnInit, OnDestroy {
   dataWebsocket:any[]= []
   topDez:any[]= []
   private chart: any; // Variável para o gráfico
+  
   private wsUrl: string = 'wss://stream.binance.com:9443/ws/ethusdt@kline_10m'; // URL do WebSocket
   private timeInterval = 0; // Para gerar labels de tempo incrementais
   private isWsClosed: boolean = false; // Flag para monitorar se a WebSocket foi fechada

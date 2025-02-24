@@ -28,6 +28,7 @@ export class NegocicoesComponent {
   invalidarFormulario:boolean = false;
   formulario!:FormGroup;
   data = new MatTableDataSource<any>();
+  isLoader:boolean = true;
   logo:any[] = [];
   totalItens = 0;
   pageSize = 10;
@@ -41,17 +42,26 @@ export class NegocicoesComponent {
       moedas: new FormControl('',[Validators.required])
     })
     //this.esconderResults(); //não está funcionando esse codigo.
-      this.dadosApi.getNegociacoes().subscribe((moedas)=>{
-        this.moedasData.push(moedas)
-        this.moedasData.forEach((item)=>{
-          item.find((moeda:any)=>{ ////// substituir o array de moedas por um array de moedas zeradas e nao zeradas para pegar no filtro quando o usuario pesquisar.
-            moeda.price === "0.00000000" ? this.moedasZeradas.push(moeda): this.moedasNaoZeradas.push(moeda); //this.moedasfilter = this.moedas.filter((moeda) => moeda.symbol.toLowerCase().includes(this.formulario.get('moedas')?.value.toLowerCase()))
-          }
-          )
-          
+      setTimeout(()=>{
+        this.dadosApi.getNegociacoes().subscribe((moedas)=>{
+          this.isLoader = false;
+          this.moedasData.push(moedas)
+          this.moedasData.forEach((item)=>{
+            item.find((moeda:any)=>{ ////// substituir o array de moedas por um array de moedas zeradas e nao zeradas para pegar no filtro quando o usuario pesquisar.
+              moeda.price === "0.00000000" ? this.moedasZeradas.push(moeda): this.moedasNaoZeradas.push(moeda);//this.moedasfilter = this.moedas.filter((moeda) => moeda.symbol.toLowerCase().includes(this.formulario.get('moedas')?.value.toLowerCase()))
+            }
+          ) 
+          })
+          //console.log(this.moedasZeradas)
         })
-       console.log(this.moedasZeradas)
-      })
+      },5000)
+      //esta função abaixo serve para limitar o array de moedas para os 10 primeiros resultados.
+      for(let i = 0; i < this.moedasData.length; i++){
+        if(i === 10){
+          console.log(this.moedasData[i])
+        }
+      }
+      
       
     }
     
@@ -70,8 +80,6 @@ export class NegocicoesComponent {
   search(event:Event):void{
     /* const target = event.target as HTMLInputElement;
     const value = target.value; */
-
-    this.moedasfilter = this.moedasData.filter((moeda) => moeda.symbol.toLowerCase().includes(this.formulario.get('moedas')?.value.toLowerCase()))
-    
+    this.moedasfilter = this.moedasData.filter((moeda) => moeda.symbol.toLowerCase().includes(this.formulario.get('moedas')?.value.toLowerCase())) 
   }
 }

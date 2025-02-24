@@ -10,7 +10,16 @@
 </div>
 
 <div class="response" >
-    <div class="row mt-5" >
+    
+    <div class="col" *ngIf = "isLoader ">
+        <div class="text-center d-flex align-items-center">
+            <img class="logoSpinner" src="../../../assets/logo.svg" alt="">
+        </div>
+        <div>
+            <p>Carregando moedas...</p>
+        </div>
+    </div>
+    <div class="row mt-5" *ngIf = "!isLoader"  >
         <div class="col-6 text-center">
             <p class="moeda text-center">Moeda</p>
         </div>
@@ -26,8 +35,6 @@
         <div class="col-6 text-center rol text-center">
             <p *ngFor="let moeda of moedasZeradas" >{{moeda.symbol}}: {{moeda.price}}</p>
         </div>
-        
-    
     </div>
     <div class="col-12 text-center">
     </div>
