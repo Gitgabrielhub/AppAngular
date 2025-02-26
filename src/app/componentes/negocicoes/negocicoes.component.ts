@@ -61,10 +61,19 @@ export class NegocicoesComponent {
           console.log(this.moedasData[i])
         }
       } */
-      this.logoMoedas.getLogo().subscribe((logo:any)=>{
-        console.log(logo.symbols.forEach((item:any)=>{
-          item.symbol
-        }))  
+     this.logoMoedas.getLogo().subscribe((logo:any)=>{
+        //console.log(logo.symbols[0].symbol)
+        console.log(logo)
+        /* for(let i= 0; i<logo.length; i++){
+          if(logo.image[i] !== null || logo.image[i] !== undefined){
+            this.logo.push(logo.image)
+            
+          }
+        }   */
+       logo.forEach((item:any)=>{
+        this.logo.push(item.image)
+         console.log(item.image)
+       })
       })
       
     }
