@@ -1,18 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { enviroments } from '../enviroments';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class LogoCryptoService {
-//private url = "https://www.binance.com/bapi/composite/v1/public/promo/currency/logo?currencyCode=BTC";
+  private url = enviroments.logoApiUrl;
 
   constructor(private http:HttpClient) { }
 
- /*  getLogo():Observable<any[]>{
+  getLogo():Observable<any[]>{
     return this.http.get<any[]>(this.url)
-  } */
+  }
 
 }

@@ -25,11 +25,11 @@ export class NegocicoesComponent {
   public moedasfilter: any[]=[];
   public moedasZeradas:any[]=[];
   public moedasNaoZeradas:any[]=[];
+  logo:any[] = [];
   invalidarFormulario:boolean = false;
   formulario!:FormGroup;
   data = new MatTableDataSource<any>();
   isLoader:boolean = true;
-  logo:any[] = [];
   totalItens = 0;
   pageSize = 10;
   
@@ -56,12 +56,16 @@ export class NegocicoesComponent {
         })
       },5000)
       //esta função abaixo serve para limitar o array de moedas para os 10 primeiros resultados.
-      for(let i = 0; i < this.moedasData.length; i++){
+      /* for(let i = 0; i < this.moedasData.length; i++){
         if(i === 10){
           console.log(this.moedasData[i])
         }
-      }
-      
+      } */
+      this.logoMoedas.getLogo().subscribe((logo:any)=>{
+        console.log(logo.symbols.forEach((item:any)=>{
+          item.symbol
+        }))  
+      })
       
     }
     
@@ -72,14 +76,16 @@ export class NegocicoesComponent {
       }
       
       //this.moedasfilter = this.moedas.filter((moeda) => moeda.symbol.toLowerCase().includes(this.formulario.get('moedas')?.value.toLowerCase()))
-  }
-
-  getMoedas(){
-    return this.formulario.get('moedas');
-  }
+    }
+    
+    getMoedas(){
+      return this.formulario.get('moedas');
+    }
   search(event:Event):void{
     /* const target = event.target as HTMLInputElement;
     const value = target.value; */
     this.moedasfilter = this.moedasData.filter((moeda) => moeda.symbol.toLowerCase().includes(this.formulario.get('moedas')?.value.toLowerCase())) 
   }
+  
+  
 }

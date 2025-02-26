@@ -11,8 +11,8 @@
 
 <div class="response" >
     
-    <div class="col" *ngIf = "isLoader ">
-        <div class="text-center d-flex align-items-center">
+    <div class="col-12 mt-5" *ngIf = "isLoader ">
+        <div class="text-center d-flex align-items-center mt-5 ">
             <img class="logoSpinner" src="../../../assets/logo.svg" alt="">
         </div>
         <div>
@@ -38,6 +38,11 @@
     </div>
     <div class="col-12 text-center">
     </div>
+</div>
+<div class="container">
+    <ul>
+        <li *ngFor="let img of logo">imagem<img src="https://api.coingecko.com/api/v3/coins/markets?vs_currency={{img.quoteAsset}}" alt=""></li>
+    </ul>
 </div>
 
 
