@@ -52,7 +52,7 @@ export class NegocicoesComponent {
             }
           ) 
           })
-          //console.log(this.moedasZeradas)
+          console.log(this.moedasZeradas)
         })
       },5000)
       //esta função abaixo serve para limitar o array de moedas para os 10 primeiros resultados.
@@ -71,6 +71,13 @@ export class NegocicoesComponent {
        })
       })
       
+      /* for(let i = 0; i < this.moedasData.length; i++){
+        for(let j = 0; j < this.logo.length; j++){
+          if(this.moedasData[i].symbol === this.logo[j].symbol){
+
+          }
+        }
+      } */
     }
     
     esconderResults(){

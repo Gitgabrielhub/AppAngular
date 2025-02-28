@@ -7,7 +7,7 @@ import { RenderChartComponent } from './componentes/render-chart/render-chart.co
 import { LoginComponent } from './componentes/login/login.component';
 
 
-
+//futuramente implementar lazy loading
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
