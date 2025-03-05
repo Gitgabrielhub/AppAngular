@@ -9,11 +9,6 @@ import { LogoCryptoService } from 'src/app/services/logo-crypto.service';
 import { PaginatorService } from 'src/app/services/paginator.service';
 
 
-
-
-
-
-
 @Component({
   selector: 'app-negocicoes',
   templateUrl: './negocicoes.component.html',
@@ -25,6 +20,7 @@ export class NegocicoesComponent {
   public moedasfilter: any[]=[];
   public moedasZeradas:any[]=[];
   public moedasNaoZeradas:any[]=[];
+  public moedasIguais:any[]=[];
   logo:any[] = [];
   invalidarFormulario:boolean = false;
   formulario!:FormGroup;
@@ -48,36 +44,37 @@ export class NegocicoesComponent {
           this.moedasData.push(moedas)
           this.moedasData.forEach((item)=>{
             item.find((moeda:any)=>{ ////// substituir o array de moedas por um array de moedas zeradas e nao zeradas para pegar no filtro quando o usuario pesquisar.
-              moeda.price === "0.00000000" ? this.moedasZeradas.push(moeda): this.moedasNaoZeradas.push(moeda);//this.moedasfilter = this.moedas.filter((moeda) => moeda.symbol.toLowerCase().includes(this.formulario.get('moedas')?.value.toLowerCase()))
+              moeda.price === "0.00000000" ? this.moedasZeradas.push(moeda): this.moedasNaoZeradas.push(moeda);
+              //this.moedasfilter = this.moedas.filter((moeda) => moeda.symbol.toLowerCase().includes(this.formulario.get('moedas')?.value.toLowerCase()))
             }
           ) 
           })
-          console.log(this.moedasZeradas)
+          //console.log(this.moedasZeradas)
         })
-      },5000)
+      })
       //esta função abaixo serve para limitar o array de moedas para os 10 primeiros resultados.
-      /* for(let i = 0; i < this.moedasData.length; i++){
+      for(let i = 0; i < this.moedasData.length; i++){
         if(i === 10){
-          console.log(this.moedasData[i])
+          //console.log(this.moedasData[i])
         }
-      } */
+      }
+      this.logoMoedas.getprice().subscribe((price:any)=>{
+        console.log(price)
+      })
      this.logoMoedas.getLogo().subscribe((logo:any)=>{
-        //console.log(logo.symbols[0].symbol)
-      console.log(logo)
         
        logo.forEach((item:any)=>{
-        this.logo.push(item.image)
-         console.log(item.image)
-       })
+       
+        this.logo.push(item)
+        
+        this.logo.forEach((item:any)=>{
+          //console.log(item)
+        })
+      })
+       
       })
       
-      /* for(let i = 0; i < this.moedasData.length; i++){
-        for(let j = 0; j < this.logo.length; j++){
-          if(this.moedasData[i].symbol === this.logo[j].symbol){
-
-          }
-        }
-      } */
+      
     }
     
     esconderResults(){
@@ -97,6 +94,5 @@ export class NegocicoesComponent {
     const value = target.value; */
     this.moedasfilter = this.moedasData.filter((moeda) => moeda.symbol.toLowerCase().includes(this.formulario.get('moedas')?.value.toLowerCase())) 
   }
-  
   
 }

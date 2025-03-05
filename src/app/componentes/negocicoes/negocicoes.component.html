@@ -20,28 +20,30 @@
         </div>
     </div>
     <div class="row mt-5" *ngIf = "!isLoader"  >
-        <div class="col-6 text-center">
+        <div class="col-12 text-center">
             <p class="moeda text-center">Moeda</p>
         </div>
         
-        <div class="col-6 text-center">
+        <!-- <div class="col-6 text-center">
             <p class="moeda text-center">Moedas desativadas</p>
+        </div> -->
+        
+        <div class="col-10 text-center  rol text-center" style="height: 45vh;">
+            <ul>
+                <li class="p-2" *ngFor="let moeda of logo"><p ><span><img src="{{moeda.image}}" alt="" style="height: 20px; width: 20px;"></span><span>{{moeda.name}}</span> <span>{{moeda.current_price}}</span></p></li>
+            </ul>
         </div>
         
-        <div class="col-6 text-center  rol text-center">
-            <p *ngFor="let moeda of moedasNaoZeradas" >{{moeda.symbol}}: {{moeda.price}}</p>
-        </div>
-        
-        <div class="col-6 text-center rol text-center">
+        <!-- <div class="col-6 text-center rol text-center">
             <p *ngFor="let moeda of moedasZeradas" >{{moeda.symbol}}: {{moeda.price}}</p>
-        </div>
+        </div> -->
     </div>
     <div class="col-12 text-center">
     </div>
 </div>
 <div class="container">
     <ul>
-        <li *ngFor="let img of logo"><img class="logo" src="{{img}}" alt=""></li>
+        <li *ngFor="let img of logo"><img class="logo" src="{{img.image}}" alt=""></li>
     </ul>
 </div>
 

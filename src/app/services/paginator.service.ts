@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { enviroments } from '../enviroments';
+import { APIs } from '../apis';
 
 
 
@@ -11,7 +12,7 @@ import { enviroments } from '../enviroments';
 })
 export class PaginatorService {
 
-private apiUrl = enviroments.baseApiUrl
+private apiUrl = APIs.baseApiUrl
 
   constructor(private http:HttpClient) { }
   
