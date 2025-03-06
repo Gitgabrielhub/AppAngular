@@ -9,42 +9,46 @@
     </div>
 </div>
 
-<div class="response" >
+
     
-    <div class="col-12 mt-5" *ngIf = "isLoader ">
-        <div class="text-center d-flex align-items-center mt-5 ">
-            <img class="logoSpinner" src="../../../assets/logo.svg" alt="">
-        </div>
-        <div>
-            <p>Carregando moedas...</p>
-        </div>
+<div class="col-12 mt-5" *ngIf = "isLoader ">
+    <div class="text-center d-flex align-items-center mt-5 ">
+        <img class="logoSpinner" src="../../../assets/logo.svg" alt="">
     </div>
-    <div class="row mt-5" *ngIf = "!isLoader"  >
-        <div class="col-12 text-center">
-            <p class="moeda text-center">Moeda</p>
-        </div>
-        
-        <!-- <div class="col-6 text-center">
-            <p class="moeda text-center">Moedas desativadas</p>
-        </div> -->
-        
-        <div class="col-10 text-center  rol text-center" style="height: 45vh;">
-            <ul>
-                <li class="p-2" *ngFor="let moeda of logo"><p ><span><img src="{{moeda.image}}" alt="" style="height: 20px; width: 20px;"></span><span>{{moeda.name}}</span> <span>{{moeda.current_price}}</span></p></li>
-            </ul>
-        </div>
-        
-        <!-- <div class="col-6 text-center rol text-center">
-            <p *ngFor="let moeda of moedasZeradas" >{{moeda.symbol}}: {{moeda.price}}</p>
-        </div> -->
-    </div>
-    <div class="col-12 text-center">
+    <div>
+        <p>Carregando moedas...</p>
     </div>
 </div>
-<div class="container">
-    <ul>
-        <li *ngFor="let img of logo"><img class="logo" src="{{img.image}}" alt=""></li>
-    </ul>
+<div class="row mt-5" *ngIf = "!isLoader"  >
+
+    <div class="col-6" style="height: 45vh;">
+       <div class="row justify-content-center">
+        <div class="col-10">
+            <h1>acompanhe o mercado que mais cresce.</h1>
+            <h3></h3>
+            <p>Speech synthesis is the artificial production of human speech. A computer system used for this purpose is called a speech synthesizer, and can be implemented in software or hardware products. A text-to-speech (TTS) system converts normal language text into speech; other systems render symbolic linguistic representations like phonetic transcriptions into speech.[1] The reverse process is speech recognition.</p>
+        </div>
+       </div>
+    </div>
+    <div class="col-6 text-center " style="height: 45vh;">
+        <div class="row justify-content-center">
+            <div class="col-6 rol">
+                <h3>companhe o mercado</h3>
+                <ul>
+                    <li class="p-2" *ngFor="let moeda of logo"><p ><span><img src="{{moeda.image}}" alt="" style="height: 20px; width: 20px;"></span><span>{{moeda.name}}</span> <span>{{moeda.current_price}}</span></p></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<div class="row">
+    <div class="col-6">
+        
+    </div>
+    <div class="col-6">
+
+    </div>
 </div>
 
 
