@@ -38,19 +38,27 @@ export class NegocicoesComponent {
       moedas: new FormControl('',[Validators.required])
     })
     //this.esconderResults(); //não está funcionando esse codigo.
-      setTimeout(()=>{
-        this.dadosApi.getNegociacoes().subscribe((moedas)=>{
-          this.isLoader = false;
-          this.moedasData.push(moedas)
-          this.moedasData.forEach((item)=>{
-            item.find((moeda:any)=>{ ////// substituir o array de moedas por um array de moedas zeradas e nao zeradas para pegar no filtro quando o usuario pesquisar.
-              moeda.price === "0.00000000" ? this.moedasZeradas.push(moeda): this.moedasNaoZeradas.push(moeda);
-              //this.moedasfilter = this.moedas.filter((moeda) => moeda.symbol.toLowerCase().includes(this.formulario.get('moedas')?.value.toLowerCase()))
-            }
-          ) 
+    setTimeout(()=>{
+      this.dadosApi.getNegociacoes().subscribe((moedas)=>{
+        this.isLoader = false;
+        this.moedasData.push(moedas)
+        this.moedasData.forEach((item)=>{
+          item.find((moeda:any)=>{ ////// substituir o array de moedas por um array de moedas zeradas e nao zeradas para pegar no filtro quando o usuario pesquisar.
+            moeda.price === "0.00000000" ? this.moedasZeradas.push(moeda): this.moedasNaoZeradas.push(moeda);
+          }
+        ) 
           })
           //console.log(this.moedasZeradas)
         })
+        console.log('moedas data:', this.moedasData)
+        this.moedasfilter.forEach((moedas)=>{
+          //console.log(moedas)
+          moedas.filter((moeda:any) => {
+            console.log(moeda)
+            moeda.symbol.toLowerCase().includes(this.formulario.get('moedas')?.value.toLowerCase())
+          })
+        })
+        //console.log(this.moedasfilter)
       })
       //esta função abaixo serve para limitar o array de moedas para os 10 primeiros resultados.
       for(let i = 0; i < this.moedasData.length; i++){
@@ -59,7 +67,7 @@ export class NegocicoesComponent {
         }
       }
       this.logoMoedas.getprice().subscribe((price:any)=>{
-        console.log(price)
+        //console.log(price)
       })
      this.logoMoedas.getLogo().subscribe((logo:any)=>{
         
@@ -71,12 +79,8 @@ export class NegocicoesComponent {
           //console.log(item)
         })
       })
-       
       })
-      
-      
     }
-    
     esconderResults(){
       let setarInput:any = document.getElementById('input-moeda');
       if(setarInput.value === ''){
@@ -85,7 +89,6 @@ export class NegocicoesComponent {
       
       //this.moedasfilter = this.moedas.filter((moeda) => moeda.symbol.toLowerCase().includes(this.formulario.get('moedas')?.value.toLowerCase()))
     }
-    
     getMoedas(){
       return this.formulario.get('moedas');
     }
@@ -94,5 +97,4 @@ export class NegocicoesComponent {
     const value = target.value; */
     this.moedasfilter = this.moedasData.filter((moeda) => moeda.symbol.toLowerCase().includes(this.formulario.get('moedas')?.value.toLowerCase())) 
   }
-  
 }

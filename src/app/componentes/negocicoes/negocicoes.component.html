@@ -21,7 +21,7 @@
 </div>
 <div class="row mt-5" *ngIf = "!isLoader"  >
 
-    <div class="col-6" style="height: 45vh;">
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 mb-5" style="height: 45vh;">
        <div class="row justify-content-center">
         <div class="col-10">
             <h1>acompanhe o mercado que mais cresce.</h1>
@@ -30,10 +30,10 @@
         </div>
        </div>
     </div>
-    <div class="col-6 text-center " style="height: 45vh;">
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 text-center mt-5" style="height: 45vh;">
         <div class="row justify-content-center">
             <div class="col-6 rol">
-                <h3>companhe o mercado</h3>
+                <h3>Acompanhe o mercado</h3>
                 <ul>
                     <li class="p-2" *ngFor="let moeda of logo"><p ><span><img src="{{moeda.image}}" alt="" style="height: 20px; width: 20px;"></span><span>{{moeda.name}}</span> <span>{{moeda.current_price}}</span></p></li>
                 </ul>
