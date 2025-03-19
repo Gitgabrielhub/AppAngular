@@ -137,4 +137,5 @@ export class GraficoComponent implements OnInit, OnDestroy {
       this.chart.update();
     }
   }
+  
 }

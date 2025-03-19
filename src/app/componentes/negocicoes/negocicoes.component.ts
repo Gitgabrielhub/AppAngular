@@ -97,4 +97,5 @@ export class NegocicoesComponent {
     const value = target.value; */
     this.moedasfilter = this.moedasData.filter((moeda) => moeda.symbol.toLowerCase().includes(this.formulario.get('moedas')?.value.toLowerCase())) 
   }
+ 
 }
